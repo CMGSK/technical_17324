@@ -1,0 +1,24 @@
+<div class="master">
+    <p>
+        Cualquier nombre de usuario valida
+        <br>
+        Password 'veosat'
+    </p>
+    <div class="comp">
+        <h5>
+            Username:
+        </h5>
+        <input #username pInputText type="text">
+        <h5>
+            Password:
+        </h5>
+        <input #password pInputText type="password">
+        <br>
+        <br>
+        <div *ngIf="fail" class="fail">
+            <p><font color="red">Wrong password. Please retry.</font></p>
+            <br>
+        </div>
+        <button pButton pRipple type="button" label="Log in" (click)="validate(username.value, password.value)"></button>
+    </div>
+</div>
