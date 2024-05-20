@@ -23,6 +23,9 @@ export class InfoanimeComponent implements OnInit {
   // Creamos un array de objetos Anime que mostraremos en la tabla
   animes: Anime[];
 
+  // Para que funcione el descargar PDF.
+  columns: any[];
+
   constructor( private animeService: AnimeService) { }
 
   ngOnInit(): void {
@@ -39,6 +42,17 @@ export class InfoanimeComponent implements OnInit {
   // a la funcion onInit, que reemplazara los datos de nuestra tabla actual cuando parsee la respuesta
   refreshTable(){
     this.ngOnInit();
+  }
+
+  // No se por que no anade los header de las columnas :(
+  downloadPDF(){
+    import("jspdf").then(jsPDF => {
+      import("jspdf-autotable").then(x => {
+          const doc = new jsPDF.default();
+          (doc as any).autoTable(this.columns, this.animes);
+          doc.save('anime_table.pdf');
+      });
+    });
   }
 
 }

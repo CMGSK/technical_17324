@@ -40,7 +40,7 @@ table > * {
 .header_caption{
     display: flex;
     flex-direction: row;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-around;
     flex-wrap: nowrap;
 }
