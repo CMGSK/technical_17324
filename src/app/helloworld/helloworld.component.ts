@@ -3,7 +3,6 @@ import { DataService } from '../login/login.dataService';
 
 @Component({
   selector: 'app-helloworld',
-  providers: [DataService],
   templateUrl: './helloworld.component.html',
   styleUrls: ['./helloworld.component.css']
 })
@@ -15,6 +14,7 @@ export class HelloworldComponent implements OnInit {
 
   ngOnInit(): void {
     //cargamos los datos desde el login para que nos salude con nuestro nombre
+    console.log("hello, " + this.ds.dataOut());
     this.user = this.ds.dataOut();
   }
 

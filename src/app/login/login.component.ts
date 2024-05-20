@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Data, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { DataService } from './login.dataService';
 
 // La hardcodeamos porque en este caso no la vamos a usar mucho.
@@ -9,7 +9,6 @@ const pwd = "veosat";
 
 @Component({
   selector: 'app-login',
-  providers: [DataService],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -31,7 +30,8 @@ export class LoginComponent implements OnInit {
     //Si la contrasena valida, redirigimos al home guardandonos el username
     if (password == pwd) {
       this.user = user;
-      this.ds.dataIn(user);
+      this.ds.dataIn(this.user);
+      console.log(this.ds.dataOut())
       this.router.navigate(['/home']);
     }
     else this.fail = true;

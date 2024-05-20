@@ -2,10 +2,9 @@
     <div class="back">
         <button pButton pRipple type="button" label="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" ></button>
     </div>
-    <hr>
     <div class="table">
         <div class="filter">
-            <p-table #dt [value]="animes" [globalFilterFields]="['name']">
+            <p-table class="inner_table" #dt [value]="animes" [globalFilterFields]="['name']">
                 <ng-template pTemplate="caption">
                     <div class="caption_template">
                         <div class="header_caption">
