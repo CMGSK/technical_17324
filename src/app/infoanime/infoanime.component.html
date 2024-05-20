@@ -1,16 +1,28 @@
 <div class="master">
     <div class="back">
-        <button pButton pRipple type="button" label="Home"></button>
+        <button pButton pRipple type="button" label="Home" [routerLink]="['/home']" routerLinkActive="router-link-active" ></button>
     </div>
     <hr>
     <div class="table">
         <div class="filter">
-            <p-table [value]="animes">
+            <p-table #dt [value]="animes" [globalFilterFields]="['name']">
+                <ng-template pTemplate="caption">
+                    <div class="caption_template">
+                        <div class="header_caption">
+                            <h2> Lista aleatoria de animes </h2>
+                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Filtro"/>
+                            <button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-rounded" (click)="refreshTable()"></button>
+                        </div>
+                    </div>
+                </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
                         <th>Id</th>
                         <th>Title</th>
-                        <th>Created at</th>
+                        <th pSortableColumn="date">
+                            <p-sortIcon field="date"></p-sortIcon>
+                            Created at
+                        </th>
                         <th>Rating</th>
                     </tr>
                 </ng-template>
@@ -18,7 +30,7 @@
                     <tr>
                         <td>{{anime.id}}</td>
                         <td>{{anime.name}}</td>
-                        <td>{{anime.date}}</td>
+                        <td pSortableColumn="date">{{anime.date}}</td>
                         <td>{{anime.rating}}</td>
                     </tr>
                 </ng-template>
