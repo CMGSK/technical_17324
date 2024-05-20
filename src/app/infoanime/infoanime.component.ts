@@ -44,6 +44,7 @@ export class InfoanimeComponent implements OnInit {
     this.ngOnInit();
   }
 
+  // Funcion sacada de la documentacion oficial
   // No se por que no anade los header de las columnas :(
   downloadPDF(){
     import("jspdf").then(jsPDF => {

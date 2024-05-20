@@ -3,6 +3,9 @@ import {Injectable} from '@angular/core'
 
 import { Anime } from './infoanime.anime';
 
+// Definimos un inyectable que nos construya un array de objetos Anime
+// con el json que recibamos desde la API
+
 @Injectable()
 export class AnimeService {
 
